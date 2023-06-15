@@ -40,6 +40,7 @@ const App = () => {
           amount={expense.amount}
           date={expense.date}
           location={expense.location}
+          id={expense.id}
         ></ExpenseItem>
       ))}
     </div>

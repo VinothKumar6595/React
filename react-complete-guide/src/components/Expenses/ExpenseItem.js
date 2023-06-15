@@ -11,6 +11,7 @@ const ExpenseItem = (props) => {
         title={props.title}
         location={props.location}
         amount={props.amount}
+        id={props.id}
       ></ExpenseDetails>
     </Card>
   );

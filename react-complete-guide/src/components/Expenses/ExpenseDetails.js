@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExpenseItem.css";
 const ExpenseDetails = (props) => {
+  let [amount, setExpense] = useState(props.amount);
   const clickHandler = () => {
-    console.log("clicked!!!!");
+    setExpense(100);
   };
   return (
     <div className="expense-item__description">
@@ -10,9 +11,9 @@ const ExpenseDetails = (props) => {
       <div className="expense-item__description h2">
         <h3>{props.location}</h3>
       </div>
-      <div className="expense-item__price">${props.amount}</div>
+      <div className="expense-item__price">${amount}</div>
       <button onClick={clickHandler} className="delete-button">
-        Delete
+        Modify Expense
       </button>
     </div>
   );
