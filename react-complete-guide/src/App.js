@@ -1,5 +1,6 @@
 import React from "react";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
+import ExpenseForm from "./components/Expenses/ExpenseForm";
 
 const App = () => {
   const expenses = [
@@ -34,6 +35,7 @@ const App = () => {
   ];
   return (
     <div>
+      <ExpenseForm></ExpenseForm>
       {expenses.map((expense) => (
         <ExpenseItem
           title={expense.title}
