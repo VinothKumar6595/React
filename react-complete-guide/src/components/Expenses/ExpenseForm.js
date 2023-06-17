@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-import "./NewExpense.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitile, setEnteredTitle] = useState("");
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -23,30 +22,39 @@ const ExpenseForm = () => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
   return (
-    <div className="new-expense">
-      <form onSubmit={submitHandler}>
-        <div className="new-expene__controls">
-          <div className="new-expense__control">
-            <label>Expense Title</label>
-            <input type="text" onChange={titleChangeHandler} />
-          </div>
-        </div>
+    <form onSubmit={submitHandler}>
+      <div className="new-expene__controls">
         <div className="new-expense__control">
-          <label>Expense Amount</label>
-          <input type="number" onChange={amountChangeHandler} />
+          <label>Expense Title</label>
+          <input
+            type="text"
+            onChange={titleChangeHandler}
+            value={enteredTitile}
+          />
         </div>
-        <div className="new-expense__control">
-          <label>Expense Date</label>
-          <input type="date" onChange={dateChangeHandler} />
-        </div>
-        <div className="new-expense__actions">
-          <button type="submit">Add Expense</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="new-expense__control">
+        <label>Expense Amount</label>
+        <input
+          type="number"
+          onChange={amountChangeHandler}
+          value={enteredAmount}
+        />
+      </div>
+      <div className="new-expense__control">
+        <label>Expense Date</label>
+        <input type="date" onChange={dateChangeHandler} value={enteredDate} />
+      </div>
+      <div className="new-expense__actions">
+        <button type="submit">Add Expense</button>
+      </div>
+    </form>
   );
 };
 

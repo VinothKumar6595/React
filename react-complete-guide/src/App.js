@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
-import ExpenseForm from "./components/Expenses/ExpenseForm";
+import NewExpense from "./components/Expenses/NewExpense";
 
 const App = () => {
   const expenses = [
@@ -33,9 +33,16 @@ const App = () => {
       location: "Delhi",
     },
   ];
+
+  const addExpenseHandler = (newExpense) => {
+    console.log("in App.js");
+    expenses.push(newExpense);
+    console.log(expenses);
+  };
+
   return (
     <div>
-      <ExpenseForm></ExpenseForm>
+      <NewExpense onAddExpense={addExpenseHandler} />
       {expenses.map((expense) => (
         <ExpenseItem
           title={expense.title}
