@@ -52,6 +52,35 @@ const App = () => {
   const filteredExpenses = expenses.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
+  let renderedContent;
+  if (filteredExpenses.length === 1) {
+    renderedContent = filteredExpenses.map((expense) => (
+      <div>
+        <ExpenseItem
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+          location={expense.location}
+          key={expense.id}
+        ></ExpenseItem>
+        <div>
+          <h1>Only single Expense here. Please add more...</h1>
+        </div>
+      </div>
+    ));
+  } else {
+    renderedContent = filteredExpenses.map((expense) => (
+      <div>
+        <ExpenseItem
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+          location={expense.location}
+          key={expense.id}
+        ></ExpenseItem>
+      </div>
+    ));
+  }
 
   return (
     <Card>
@@ -60,15 +89,7 @@ const App = () => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       ></ExpenseFilter>
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-          location={expense.location}
-          key={expense.id}
-        ></ExpenseItem>
-      ))}
+      {renderedContent}
     </Card>
   );
 };
