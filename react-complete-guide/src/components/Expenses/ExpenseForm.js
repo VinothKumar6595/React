@@ -38,20 +38,23 @@ const ExpenseForm = (props) => {
             value={enteredTitile}
           />
         </div>
-      </div>
-      <div className="new-expense__control">
-        <label>Expense Amount</label>
-        <input
-          type="number"
-          onChange={amountChangeHandler}
-          value={enteredAmount}
-        />
-      </div>
-      <div className="new-expense__control">
-        <label>Expense Date</label>
-        <input type="date" onChange={dateChangeHandler} value={enteredDate} />
+        <div className="new-expense__control">
+          <label>Expense Amount</label>
+          <input
+            type="number"
+            onChange={amountChangeHandler}
+            value={enteredAmount}
+          />
+        </div>
+        <div className="new-expense__control">
+          <label>Expense Date</label>
+          <input type="date" onChange={dateChangeHandler} value={enteredDate} />
+        </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
