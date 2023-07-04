@@ -1,6 +1,6 @@
 import React from "react";
-import "./ExpensesList.css";
-import ExpenseItem from "./ExpenseItem";
+import "./ExpenseList.css";
+import ExpenseItem from "../Expenses/ExpenseItem";
 const ExpenseList = (props) => {
   if (props.items.length === 1) {
     return props.items.map((expense) => (
